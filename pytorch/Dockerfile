@@ -1,17 +1,19 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
-ARG USERNAME
+ARG PASSWORD
 
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install python3
 RUN apt-get -y install python3-pip
+RUN apt-get -y install python-opencv
 RUN apt-get -y install git openssh-server
 
 RUN pip3 install torch torchvision
 
 RUN ( echo "#!/bin/bash"; \
       echo ""; \
+      echo "cp -R /tmp/.ssh /root/"; \
       echo "service ssh start"; \
       echo "tail -f /dev/null"; ) > /root/entrypoint.sh && \
     chmod +x /root/entrypoint.sh && \
