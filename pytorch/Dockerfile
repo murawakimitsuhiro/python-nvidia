@@ -6,10 +6,12 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install python3
 RUN apt-get -y install python3-pip
-RUN apt-get -y install python-opencv
+RUN apt-get -y install libglib2.0-0 libsm6 libxrender1 libxext6
+
 RUN apt-get -y install git openssh-server
 
 RUN pip3 install torch torchvision
+RUN pip3 install opencv-python
 
 RUN ( echo "#!/bin/bash"; \
       echo ""; \
