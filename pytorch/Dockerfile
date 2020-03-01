@@ -4,6 +4,7 @@ ARG PASSWORD
 
 RUN apt-get update
 RUN apt-get -y upgrade
+RUN apt-get -y install vim
 RUN apt-get -y install python3
 RUN apt-get -y install python3-pip
 RUN apt-get -y install libglib2.0-0 libsm6 libxrender1 libxext6
